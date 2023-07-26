@@ -1,5 +1,4 @@
 
-
 import { useEffect } from 'react';
 import './App.css';
 import { useYourStore } from './store/safetyByContryList';
@@ -9,6 +8,7 @@ function App() {
   const safeByContryListAction = useYourStore(state=>state.yourAction)
   console.log(safeByContryList);
 
+  
   useEffect(()=>{
     safeByContryListAction();
   },[])

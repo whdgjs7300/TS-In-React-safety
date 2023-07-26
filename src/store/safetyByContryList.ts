@@ -16,7 +16,7 @@ export const useYourStore = create<SafeByContry>((set)=>({
     yourAction: async () => {
         // 비동기 데이터 가져오는 로직을 구현합니다.
         try {
-            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=%EC%B9%B4%EC%9E%90%ED%9D%90%EC%8A%A4%ED%83%84&pageNo=1`);
+            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=영국&pageNo=1`);
             const data = response.data;
             set({ safeByContryList: data });
         } catch (error) {
