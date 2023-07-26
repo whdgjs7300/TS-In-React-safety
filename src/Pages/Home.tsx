@@ -1,51 +1,64 @@
 import { useState, useEffect } from "react";
 import { useYourStore } from "../store/safetyByContryList";
+import { useMyStore } from "../store/contryInfoList";
 
 
 
 const Home = () => {
     const [searchContry, setSearchContry] = useState<string>('');
 
-    const safeByContryList = useYourStore(state=>state.safeByContryList);
-    const safeByContryListAction = useYourStore(state=>state.yourAction)
-    console.log(safeByContryList);
+    const [showModal, setShowModal]= useState<boolean>(false);
 
-    useEffect(()=>{
-        safeByContryListAction();
-    },[]);
+    const contryList = useMyStore(state => state.contryList)
+    const contryAction = useMyStore(state => state.Action)
+    console.log(contryList);
 
-    // 검색어가 변경될 때마다 호출되는 함수로, 여기서 API를 호출하여 데이터를 가져올 수 있습니다.
+
+    // 
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        // searchContry의 업데이트 된 값을 전달 한 데이터 호출
+        contryAction(searchContry);
+        setShowModal(true);
+    };
+
+    // onchange 될 때마다 바로 검색결과를 보여주고 싶으면 수정해야할 함수
     const handleSearch = (searchValue: string) => {
         setSearchContry(searchValue);
-        // 여기서 API를 호출하고, 검색어와 관련된 데이터를 safeByContryList 스토어에 저장하는 로직을 추가하세요.
-        // 예를 들면 useYourStore의 yourAction 함수를 사용하여 데이터를 업데이트할 수 있습니다.
-        // useYourStore.getState().yourAction(...);
-    };
 
-
-    // 모달 창 토글 함수
-    const toggleModal = () => {
-        // 모달 창을 열거나 닫는 로직을 추가하세요.
     };
+    
+    useEffect(()=>{
+        if(searchContry === '') {
+            return;
+        }
+        contryAction(searchContry);
+    },[])
+
 
     return ( 
         <div>
             {/* 검색 상자 */}
+            <form onSubmit={handleSubmit}>
             <input
                 type="text"
                 value={searchContry}
                 onChange={(e) => handleSearch(e.target.value)}
-                placeholder="검색어를 입력하세요"
+                placeholder="국가 이름을 입력해주세요!"
             />
+            <button type="submit">검색</button>
+            </form>
             {/* 모달 창에 데이터를 나타낼 부분 */}
-            {safeByContryList.length > 0 && (
+            {showModal && contryList &&(
                 <div>
                     {/* 여기에 모달 창에 나타낼 데이터를 매핑하여 렌더링하는 로직을 추가하세요 */}
-                    {safeByContryList.map((item) => (
-                        <div key={item.id}>{item.title}</div>
+                    {contryList?.map((item,i) => (
+                        <div key={i}>{item?.countryName}</div>
                     ))}
                 </div>
             )}
+            
+            
         </div>
     );
 }

@@ -5,7 +5,7 @@ const REACT_API_KEY="9V%2BSdKNbzQD7oIQPHdDdlKZz0%2BPj1gnzDGKeS%2B8GWk2LHpSkDx5Ig
 
 interface SafeByContry {
     safeByContryList: any[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
-    yourAction: () => Promise<void>; // 비동기 함수 타입 Promise객체
+    yourAction: (searchContry :string) => Promise<void>; // 비동기 함수 타입 Promise객체
 }
 
 
@@ -13,12 +13,11 @@ interface SafeByContry {
 
 export const useYourStore = create<SafeByContry>((set)=>({
     safeByContryList: [],
-    yourAction: async () => {
-        // 비동기 데이터 가져오는 로직을 구현합니다.
+    yourAction: async (searchContry) => {
         try {
-            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=영국&pageNo=1`);
+            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=${searchContry}&pageNo=1`);
             const data = response.data;
-            set({ safeByContryList: data });
+            set({ safeByContryList: data.data });
         } catch (error) {
             console.error('Error fetching data:', error);
         }

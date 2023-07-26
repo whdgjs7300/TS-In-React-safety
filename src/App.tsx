@@ -1,20 +1,18 @@
-
-import { useEffect } from 'react';
+import {  Routes, Route} from 'react-router-dom';
 import './App.css';
-import { useYourStore } from './store/safetyByContryList';
+import Home from './Pages/Home';
+
 
 function App() {
-  const safeByContryList = useYourStore(state=>state.safeByContryList);
-  const safeByContryListAction = useYourStore(state=>state.yourAction)
-  console.log(safeByContryList);
-
   
-  useEffect(()=>{
-    safeByContryListAction();
-  },[])
+  
+  
   return (
     <div className="App">
-      
+      <Routes>
+        <Route path='/' element={<Home/>}></Route>
+        
+      </Routes>
     </div>
   );
 }
