@@ -12,7 +12,7 @@ const Home = () => {
     const contryAction = useMyStore(state => state.Action)
     console.log(countryList);
 
-
+    
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
