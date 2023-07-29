@@ -12,14 +12,15 @@ const Safety = () => {
     useEffect(()=>{
         safetyAction(countryNM);
     },[])
-    console.log(countryNM);
+    console.log(safeByContryList);
 
     return ( 
         <div>
+            <h1>{safeByContryList[0]?.country_nm}({safeByContryList[0]?.continent_nm})</h1>
             {
                 safeByContryList?.map((item,i)=> (
                     <div key={i}>
-                        <h2>{item.title} ({item.ctgy_nm})</h2>
+                        <h2> {item.ctgy_nm}</h2>
                         <p dangerouslySetInnerHTML={{ __html: item.txt_origin_cn}}></p>
                     </div>
                 ))

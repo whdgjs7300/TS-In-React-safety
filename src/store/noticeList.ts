@@ -1,11 +1,12 @@
 import { create } from 'zustand';
 import axios from 'axios';
+import { NoticeList } from '../types/safetyByCountry';
 
 
 const REACT_API_KEY="9V%2BSdKNbzQD7oIQPHdDdlKZz0%2BPj1gnzDGKeS%2B8GWk2LHpSkDx5Ig%2F7u6wKopPZEf9brLck%2Bz3z81NapmasU%2Fg%3D%3D";
-
-interface NoticeList {
-    noticeList: any[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
+// 사용하는 인터페이스와 가져오는 데이터 타입 네이밍이 같으면 오류남..
+interface Notice {
+    noticeList: NoticeList[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
     Action: () => Promise<void>; // 비동기 함수 타입 Promise객체
 }
 
@@ -13,7 +14,7 @@ interface NoticeList {
 // 비동기 데이터를 가져오는 로직(공공데이터 API - 출국전 공지사항) 
 
 
-export const useMyStore = create<NoticeList>((set)=>({
+export const useMyStore = create<Notice>((set)=>({
     noticeList: [],
     Action: async () => {
         // 비동기 데이터 가져오는 로직을 구현합니다.
@@ -23,7 +24,7 @@ export const useMyStore = create<NoticeList>((set)=>({
         // 검색결과가 1개가 나올 땐 배열로 반환하지 않아 map 함수 실행 오류를 방지하기 위한 변수
             const dataArray = Array.isArray(data) ? data : [data];
         
-            set({ noticeList : dataArray});
+            set((state) => ({ ...state, noticeList: data }));
         } catch (error) {
             console.error('데이터를 불러오지 못했습니다.:', error);
         }

@@ -1,11 +1,11 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { CountryInfo } from '../types/safetyByCountry';
+import { CountryInfoList } from '../types/safetyByCountry';
 
 const REACT_API_KEY="9V%2BSdKNbzQD7oIQPHdDdlKZz0%2BPj1gnzDGKeS%2B8GWk2LHpSkDx5Ig%2F7u6wKopPZEf9brLck%2Bz3z81NapmasU%2Fg%3D%3D";
 
-interface ContryInfoList {
-    countryList: CountryInfo[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
+interface ContryInfo {
+    countryList: CountryInfoList[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
     Action: (searchContry  :string) => Promise<void>; // 비동기 함수 타입 Promise객체
 }
 
@@ -13,7 +13,7 @@ interface ContryInfoList {
 // 비동기 데이터를 가져오는 로직(공공데이터 API - 국가별 기본정보) 
 // Home화면의 검색결과를 인자값으로 받아와 해당 국가명 호출 함수
 
-export const useMyStore = create<ContryInfoList>((set)=>({
+export const useMyStore = create<ContryInfo>((set)=>({
     countryList: [],
     Action: async (searchContry) => {
         // 비동기 데이터 가져오는 로직을 구현합니다.

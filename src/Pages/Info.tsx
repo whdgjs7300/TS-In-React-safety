@@ -17,12 +17,17 @@ const Info = () => {
         countryInfoAction(countryNM); 
     },[])
 
-    console.log(countryNM);
+    console.log(countryInfoList);
 
     return ( 
-        <div dangerouslySetInnerHTML={{ __html: countryInfoList[0]?.basic }}>
+        <div>
+            <h1>{countryInfoList[0]?.countryName}({countryInfoList[0]?.continent})</h1>
+            <img src={countryInfoList[0]?.imgUrl}  />
+            <div dangerouslySetInnerHTML={{ __html: countryInfoList[0]?.basic }}>
+            </div>
             
         </div>
+        
     );
 }
 

@@ -21,6 +21,7 @@ const Notice = () => {
             {
                 noticeList?.map((item, i)=>(
                     <div key={i}>
+                        
                         <h3>{i+1}. {item.title}</h3>
                         <p>{item.txt_origin_cn}</p>
                         <p>{item.written_dt}</p>
@@ -28,6 +29,7 @@ const Notice = () => {
                     
                     
                 ))
+                
             }
             
             

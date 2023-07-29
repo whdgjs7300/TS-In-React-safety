@@ -17,7 +17,7 @@ const Contact = () => {
 
     return ( 
         <div>
-            <h1>{contactList[0]?.country_nm}</h1>
+            <h1>{contactList[0]?.country_nm}({contactList[0]?.continent_nm})</h1>
             <div dangerouslySetInnerHTML={{ __html: contactList[0]?.contact_remark}}>
             
             </div>

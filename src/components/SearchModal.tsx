@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import { CountryInfo } from "../types/safetyByCountry";
+import { CountryInfoList } from "../types/safetyByCountry";
 
 
 interface SearchModalProps { 
-    countryList : CountryInfo[],
+    countryList : CountryInfoList[],
 
 }
 
@@ -11,7 +11,7 @@ const SearchModal = ({countryList} : SearchModalProps) => {
     const navigate = useNavigate();
 
     // 국가별 고유 ID값으로 페이지 이동 함수
-    const toCountry = (item: CountryInfo) => {
+    const toCountry = (item: CountryInfoList) => {
         navigate(`/country/${item.countryName}`);
     }
     
