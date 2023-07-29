@@ -37,7 +37,8 @@ const Home = () => {
 
 
     return ( 
-        <div>
+        <div className="home_container">
+            <h1>여행 가실 나라를 검색해주세요 !</h1>
             <form onSubmit={handleSubmit}>
             <input
                 type="text"

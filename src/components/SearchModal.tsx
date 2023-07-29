@@ -17,7 +17,7 @@ const SearchModal = ({countryList} : SearchModalProps) => {
     
 
     return ( 
-        <div>
+        <div className="modal_container">
             
                     {/* 모달 창에 나타낼 데이터를 매핑하여 렌더링하는 로직 */}
                     {/* 검색결과가 1개일땐 데이터가 배열로 감싸지지 않아 
@@ -28,7 +28,8 @@ const SearchModal = ({countryList} : SearchModalProps) => {
                         <h2>해당 국가는 없습니다.</h2>
                         ) : (
                             countryList?.map((item, i) => (
-                            <div onClick={()=>toCountry(item)}
+                            <div className="modal_item"
+                            onClick={()=>toCountry(item)}
                             key={i}>{item?.countryName}</div>
                         ))
                         )

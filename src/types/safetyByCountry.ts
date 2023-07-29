@@ -10,9 +10,10 @@ export  interface CountryInfoList {
         id: number; // 나라의 고유 ID (예: 284)
         imgUrl: string; // 이미지 URL
 }
+type StringType = string;
 
 // 공통된 타입 선언해서 사용 - 타입 재사용
-type CommonDataType = {
+type CommonDataType  = {
         continent_nm: string;
         country_nm: string;
         title : string;
@@ -23,13 +24,11 @@ type CommonDataType = {
 // 나라별 안전공지 데이터 타입
 export interface SafeByCountryList extends CommonDataType {
         ctgy_nm : string;
-
 }
 
 // 나라별 현지 연락처 데이터 타입
 export interface ContactList extends CommonDataType {
-        contact_remark: string;
-        
+        contact_remark: string; 
 };
 
 // 출국전 외교부 공지사항 데이터 타입
