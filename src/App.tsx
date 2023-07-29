@@ -6,6 +6,8 @@ import Info from './Pages/Info';
 import Safety from './Pages/Safety';
 import Contact from './Pages/Contact';
 import Permit from './Pages/Permit';
+import SpecialTrip from './Pages/SpecialTrip';
+import Notice from './Pages/Notice';
 
 
 function App() {
@@ -21,6 +23,8 @@ function App() {
         <Route path='/safety' element={<Safety/>}></Route>
         <Route path='/contact' element={<Contact/>}></Route>
         <Route path='/permit' element={<Permit/>}></Route>
+        <Route path='/specialtrip' element={<SpecialTrip/>}></Route>
+        <Route path='/notice' element={<Notice/>}></Route>
       </Routes>
     </div>
   );
