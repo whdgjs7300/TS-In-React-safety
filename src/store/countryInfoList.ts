@@ -13,6 +13,8 @@ interface ContryInfo {
 // 비동기 데이터를 가져오는 로직(공공데이터 API - 국가별 기본정보) 
 // Home화면의 검색결과를 인자값으로 받아와 해당 국가명 호출 함수
 
+
+
 export const useMyStore = create<ContryInfo>((set)=>({
     countryList: [],
     Action: async (searchContry) => {
@@ -29,4 +31,5 @@ export const useMyStore = create<ContryInfo>((set)=>({
         }
     },
 }));
+
 
