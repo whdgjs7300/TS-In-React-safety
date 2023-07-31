@@ -19,11 +19,11 @@ function App() {
       <Routes>
         <Route path='/' element={<Home/>}></Route>
         <Route path='/country/:countryNM' element={<Country/>}></Route>
-        <Route path='/basicinfo' element={<Info/>}></Route>
-        <Route path='/safety' element={<Safety/>}></Route>
-        <Route path='/contact' element={<Contact/>}></Route>
-        <Route path='/permit' element={<Permit/>}></Route>
-        <Route path='/specialtrip' element={<SpecialTrip/>}></Route>
+        <Route path='/basicinfo/:countryNM' element={<Info/>}></Route>
+        <Route path='/safety/:countryNM' element={<Safety/>}></Route>
+        <Route path='/contact/:countryNM' element={<Contact/>}></Route>
+        <Route path='/permit/:countryNM' element={<Permit/>}></Route>
+        <Route path='/specialtrip/:countryNM' element={<SpecialTrip/>}></Route>
         <Route path='/notice' element={<Notice/>}></Route>
       </Routes>
     </div>

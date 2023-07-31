@@ -1,10 +1,8 @@
-import { useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/noticeList";
 
 const Notice = () => {
-    const location = useLocation();
-    const countryNM = location.state;
+    
 
     const noticeList = useMyStore(state=>state.noticeList);
     const noticeAction = useMyStore(state=> state.Action);
@@ -13,7 +11,7 @@ const Notice = () => {
         noticeAction();
     },[])
 
-    console.log(noticeList);
+    
 
     return ( 
         <div>

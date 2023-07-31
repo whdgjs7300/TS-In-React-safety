@@ -1,15 +1,16 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useMyStore } from "../store/contactList";
 
 const Contact = () => {
-    const location = useLocation();
-    const countryNM = location.state;
+    
+    const {countryNM} = useParams();
 
     const contactList = useMyStore(state => state.contactList);
     const contactAction = useMyStore(state => state.Action);
 
     useEffect(()=>{
+        if ( countryNM !== undefined)
         contactAction(countryNM);
     },[])
 

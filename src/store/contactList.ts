@@ -16,9 +16,7 @@ interface Contact {
 export const useMyStore = create<Contact>((set)=>({
     contactList: [],
     Action: async (searchContry) => {
-        if (!searchContry) {
-            return;
-        }
+        
         // 비동기 데이터 가져오는 로직을 구현합니다.
         try {
             const response = await axios.get(`https://apis.data.go.kr/1262000/LocalContactService2/getLocalContactList2?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=${searchContry}&pageNo=1`);

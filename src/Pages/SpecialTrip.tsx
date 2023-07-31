@@ -1,16 +1,17 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/specialTripList";
 
 
 const SpecialTrip = () => {
-    const location = useLocation();
-    const countryNM = location.state;
+    
+    const {countryNM} = useParams();
 
     const specialTripList = useMyStore(state=> state.specialTripList);
     const specialTripAction = useMyStore(state => state.Action);
 
     useEffect(()=>{
+        if(countryNM !== undefined)
         specialTripAction(countryNM);
     },[])
     console.log(specialTripList)

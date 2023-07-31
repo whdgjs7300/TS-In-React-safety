@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useMyStore } from "../store/countryInfoList";
 import SearchModal from "../components/SearchModal";
 import { debounce } from 'lodash';
 import useDebounce from "../useDebounce";
 
 const Home = () => {
-    const [searchCountry, setSearchCountry] = useState<string>('');
+    const [searchCountry, setSearchCountry] = useState<string>('없음');
     const [showModal, setShowModal]= useState<boolean>(false);
 
     const debounceValue = useDebounce(searchCountry);

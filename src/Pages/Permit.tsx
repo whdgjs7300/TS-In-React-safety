@@ -1,15 +1,16 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/permitList";
 
 const Permit = () => {
-    const location = useLocation();
-    const countryNM = location.state;
+    
+    const {countryNM} = useParams();
 
     const permitList = useMyStore(state => state.permitList);
     const permitAction = useMyStore(state => state.Action);
     
     useEffect(()=>{
+        if(countryNM !== undefined)
         permitAction(countryNM);
     },[])
     console.log(permitList)
