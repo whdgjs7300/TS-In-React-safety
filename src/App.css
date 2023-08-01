@@ -22,7 +22,14 @@ a {
     margin-top: 100px;
 }
 
+h1 {
+    text-align: center;
+}
 
+p {
+    font-size: 15px;
+    font-weight: 500;
+}
 
 form {
     display: flex;
@@ -72,4 +79,74 @@ button {
 
 .modal_item:hover {
     background-color: #f1f1f1;
+}
+
+
+/* infopage */
+
+.container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+
+
+
+.container img {
+    
+    width: 50%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+
+.country_basic_info div{
+    margin-top: 50px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 30px;
+}
+.country_basic_info div p{
+    padding: 50px;
+    
+}
+
+/* notice Page */
+.notice_text_box {
+    width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+
+
+/* permit */
+
+.permit_box {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+/* safety */
+
+.safety_box {
+    width: 90%;
+    margin: auto;
+}
+
+/* contact */
+
+.contact_info {
+    margin-bottom: 30px;
+    padding: 20px;
+}
+
+.contact_info h3 {
+    font-size: 25px;
+}
+
+/* specialtrip Page */
+.specialtrip_box {
+    margin-top: 200px;
 }

@@ -4,42 +4,45 @@ import SearchModal from "../components/SearchModal";
 
 
 import useDebounce from "../useDebounce";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
     const [searchCountry, setSearchCountry] = useState<string>('없음');
     const [showModal, setShowModal]= useState<boolean>(false);
 
-    const debounceValue = useDebounce(searchCountry);
+    const debounceValue = useDebounce(searchCountry, 500);
 
     const countryList = useMyStore(state => state.countryList)
     const countryAction = useMyStore(state => state.Action)
+    const navigate = useNavigate();
     
-    
-    console.log(searchCountry);
+    console.log();
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
+        navigate(`/country/${searchCountry}`)
         // searchContry의 업데이트 된 값을 전달 한 데이터 호출
         if (searchCountry.trim() !== '') {
             countryAction(debounceValue);
             setShowModal(true);
+
         }
         
     };
 
     // onchange 될 때마다 바로 검색결과를 보여주고 싶으면 수정해야할 함수
     // 이전 값을 리턴하는 
-    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchCountry(e.target.value);
         setShowModal(true);
-    }, []);
+    };
     
     useEffect(()=>{
         if (!searchCountry) {
             return ;
         }
         countryAction(debounceValue);
-    },[debounceValue])
+    },[debounceValue, ])
 
 
     return ( 

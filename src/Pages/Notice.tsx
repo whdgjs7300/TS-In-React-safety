@@ -13,18 +13,20 @@ const Notice = () => {
     useEffect(()=>{
         noticeAction();
     },[])
-    
+    console.log(noticeList);
 
     return ( 
-        <div>
+        <div className="container">
             <h1>출국전 공지사항(외교부)</h1>
             {
                 noticeList?.map((item, i)=>(
-                    <div key={i}>
+                    <div className="notice_text_box" 
+                    key={i}>
                         
                         <h3>{i+1}. {item.title}</h3>
                         <p>{item.txt_origin_cn}</p>
                         <p>{item.written_dt}</p>
+                        <a href={item.file_download_url}>상세정보 PDF파일 다운로드</a>
                     </div>
                 ))
                 }

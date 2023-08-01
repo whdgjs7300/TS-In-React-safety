@@ -17,14 +17,15 @@ const Info = () => {
         if ( countryNM !== undefined)
         countryInfoAction(countryNM); 
     },[])
-
-    console.log(countryNM);
+    const basicInfo = countryInfoList[0]?.basic;
+    console.log(countryInfoList);
     
     return ( 
-        <div>
+        <div className="container">
             <h1>{countryInfoList[0]?.countryName}({countryInfoList[0]?.continent})</h1>
             <img src={countryInfoList[0]?.imgUrl}  />
-            <div dangerouslySetInnerHTML={{ __html: countryInfoList[0]?.basic }}>
+            <div className="country_basic_info"
+            dangerouslySetInnerHTML={{ __html: basicInfo }}>
             </div>
             
         </div>

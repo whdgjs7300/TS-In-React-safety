@@ -32,7 +32,10 @@ export interface ContactList extends CommonDataType {
 };
 
 // 출국전 외교부 공지사항 데이터 타입
-export interface NoticeList extends CommonDataType{}
+export interface NoticeList extends CommonDataType{
+        file_download_url : string;
+
+}
 
 // 특별여행경보 데이터 타입
 export interface SpecialTripList extends CommonDataType {

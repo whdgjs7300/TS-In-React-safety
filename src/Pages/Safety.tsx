@@ -16,11 +16,12 @@ const Safety = () => {
     console.log(safeByContryList);
 
     return ( 
-        <div>
+        <div className="container">
             <h1>{safeByContryList[0]?.country_nm}({safeByContryList[0]?.continent_nm})</h1>
             {
                 safeByContryList?.map((item,i)=> (
-                    <div key={i}>
+                    <div className="safety_box"
+                    key={i}>
                         <h2> {item.ctgy_nm}</h2>
                         <p dangerouslySetInnerHTML={{ __html: item.txt_origin_cn}}></p>
                     </div>
