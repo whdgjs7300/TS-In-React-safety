@@ -19,7 +19,7 @@ const Info = () => {
     },[])
 
     console.log(countryNM);
-
+    
     return ( 
         <div>
             <h1>{countryInfoList[0]?.countryName}({countryInfoList[0]?.continent})</h1>

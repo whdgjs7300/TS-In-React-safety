@@ -1,5 +1,8 @@
-import { useEffect } from "react";
+import React,{ useEffect } from "react";
 import { useMyStore } from "../store/noticeList";
+
+// 같은 내용을 반복하는 페이지이기 때문에 
+// react.memo를 사용하여 이전 내용과 동일한 경우 불필요한 렌더링을 방지함 !
 
 const Notice = () => {
     
@@ -10,7 +13,6 @@ const Notice = () => {
     useEffect(()=>{
         noticeAction();
     },[])
-
     
 
     return ( 
@@ -24,15 +26,12 @@ const Notice = () => {
                         <p>{item.txt_origin_cn}</p>
                         <p>{item.written_dt}</p>
                     </div>
-                    
-                    
                 ))
-                
-            }
+                }
             
             
         </div>
     );
 }
 
-export default Notice;
+export default React.memo(Notice);

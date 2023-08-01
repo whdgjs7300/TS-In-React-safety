@@ -1,7 +1,8 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { useMyStore } from "../store/countryInfoList";
 import SearchModal from "../components/SearchModal";
-import { debounce } from 'lodash';
+
+
 import useDebounce from "../useDebounce";
 
 const Home = () => {
@@ -13,8 +14,8 @@ const Home = () => {
     const countryList = useMyStore(state => state.countryList)
     const countryAction = useMyStore(state => state.Action)
     
-
-    console.log(debounceValue);
+    
+    console.log(searchCountry);
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -27,10 +28,11 @@ const Home = () => {
     };
 
     // onchange 될 때마다 바로 검색결과를 보여주고 싶으면 수정해야할 함수
-    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // 이전 값을 리턴하는 
+    const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
         setSearchCountry(e.target.value);
         setShowModal(true);
-    };
+    }, []);
     
     useEffect(()=>{
         if (!searchCountry) {
@@ -41,7 +43,9 @@ const Home = () => {
 
 
     return ( 
-        <div className="home_container">
+        <div className="home_container" >
+            
+            
             <h1>여행 가실 나라를 검색해주세요 !</h1>
             <form onSubmit={handleSubmit}>
             <input

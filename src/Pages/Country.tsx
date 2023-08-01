@@ -5,7 +5,7 @@ import { Link, useParams } from "react-router-dom";
 
 const Country = () => {
     
-    const {countryNM }   = useParams();
+    const {countryNM } = useParams();
     
     
     // 만약 countryNM에 괄호로 감싸진 값이 있다면, 괄호 안의 값을 제거
