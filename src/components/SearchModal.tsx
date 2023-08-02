@@ -15,7 +15,7 @@ const SearchModal = ({countryList} : SearchModalProps) => {
         navigate(`/country/${item.countryName}`);
     }
     
-
+    
     return ( 
         <div className="modal_container">
             
@@ -30,7 +30,7 @@ const SearchModal = ({countryList} : SearchModalProps) => {
                             countryList?.map((item, i) => (
                             <div className="modal_item"
                             onClick={()=>toCountry(item)}
-                            key={i}>{item?.countryName}</div>
+                            key={i}>{item?.countryName} ({item?.countryEnName})</div>
                         ))
                         )
                         }

@@ -1,12 +1,17 @@
 import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useMyStore } from "../store/contactList";
+import Loading from "../components/Loading";
 
 const Contact = () => {
     
     const {countryNM} = useParams();
 
-    const contactList = useMyStore(state => state.contactList);
+    const {contactList, loading }= useMyStore((state) => ({
+        contactList : state.contactList,
+        loading : state.loading
+    }));
+    
     const contactAction = useMyStore(state => state.Action);
 
     useEffect(()=>{
@@ -17,13 +22,21 @@ const Contact = () => {
     console.log(contactList);
 
     return ( 
-        <div className="container">
-            <h1>{contactList[0]?.country_nm}({contactList[0]?.continent_nm})</h1>
-            <div className="contact_info"
-            dangerouslySetInnerHTML={{ __html: contactRemark}}>
+        <>  
+            {
+            loading ? <Loading /> : 
+            <div className="container">
+            <h1>{contactList[0].country_nm}({contactList[0].continent_nm})</h1>
+                <div className="contact_info"
+                dangerouslySetInnerHTML={{ __html: contactRemark}}>
             
+                </div>
             </div>
-        </div>
+            
+            }
+            
+        </>
+        
     );
 }
 

@@ -1,12 +1,16 @@
 import { useLocation, useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/safetyByCountryList";
+import Loading from "../components/Loading";
 
 const Safety = () => {
     
     const {countryNM} = useParams();
 
-    const safeByContryList = useMyStore(state => state.safeByContryList);
+    const {safeByContryList, loading} = useMyStore((state) =>({
+        safeByContryList : state.safeByContryList,
+        loading : state.loading,
+    }));
     const safetyAction = useMyStore(state => state.Action);
 
     useEffect(()=>{
@@ -16,8 +20,10 @@ const Safety = () => {
     console.log(safeByContryList);
 
     return ( 
-        <div className="container">
-            <h1>{safeByContryList[0]?.country_nm}({safeByContryList[0]?.continent_nm})</h1>
+        <>  {
+                loading ? <Loading/> :
+                <div className="container">
+                <h1>{safeByContryList[0]?.country_nm}({safeByContryList[0]?.continent_nm})</h1>
             {
                 safeByContryList?.map((item,i)=> (
                     <div className="safety_box"
@@ -27,7 +33,11 @@ const Safety = () => {
                     </div>
                 ))
             }
-        </div>
+                </div>
+            }
+            
+        </>
+        
     );
 }
 

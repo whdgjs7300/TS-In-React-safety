@@ -5,6 +5,7 @@ import SearchModal from "../components/SearchModal";
 
 import useDebounce from "../useDebounce";
 import { useNavigate } from "react-router-dom";
+import MainTitle from "../components/MainTitle";
 
 const Home = () => {
     const [searchCountry, setSearchCountry] = useState<string>('없음');
@@ -13,10 +14,11 @@ const Home = () => {
     const debounceValue = useDebounce(searchCountry, 500);
 
     const countryList = useMyStore(state => state.countryList)
+    
     const countryAction = useMyStore(state => state.Action)
     const navigate = useNavigate();
     
-    console.log();
+    console.log(debounceValue);
     
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -42,20 +44,18 @@ const Home = () => {
             return ;
         }
         countryAction(debounceValue);
-    },[debounceValue, ])
+    },[debounceValue ])
 
 
     return ( 
         <div className="home_container" >
-            
-            
-            <h1>여행 가실 나라를 검색해주세요 !</h1>
+            <MainTitle/>
+            <h1>나라를 검색해주세요 </h1>
             <form onSubmit={handleSubmit}>
             <input
                 type="text"
-                
                 onChange={(e)=>handleInputChange(e)}
-                placeholder="국가 이름을 입력해주세요!"
+                
             />
             <button type="submit">검색</button>
             </form>
