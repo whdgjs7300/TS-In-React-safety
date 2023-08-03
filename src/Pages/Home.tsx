@@ -20,28 +20,30 @@ const Home = () => {
     
     console.log(debounceValue);
     
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        navigate(`/country/${searchCountry}`)
+    
         // searchContry의 업데이트 된 값을 전달 한 데이터 호출
-        if (searchCountry.trim() !== '') {
-            countryAction(debounceValue);
-            setShowModal(true);
-
-        }
+        setTimeout(() => {
+            navigate(`/country/${searchCountry}`, { state: countryList });
+        }, 600); // 디바운스 값 호출 시간보다 뒤에 페이지 이동()
         
     };
 
     // onchange 될 때마다 바로 검색결과를 보여주고 싶으면 수정해야할 함수
     // 이전 값을 리턴하는 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchCountry(e.target.value);
+        const inputValue = e.target.value;
+        // 스페이스바를 누르거나 빈값일 때도 기본 api 데이터가 호출되는 것을 방지
+    if (inputValue.trim() !== '') {
+        setSearchCountry(inputValue);
         setShowModal(true);
+    }
     };
     
     useEffect(()=>{
-        if (!searchCountry) {
-            return ;
+        if(debounceValue == '') {
+            return;
         }
         countryAction(debounceValue);
     },[debounceValue ])
@@ -50,7 +52,7 @@ const Home = () => {
     return ( 
         <div className="home_container" >
             <MainTitle/>
-            <h1>나라를 검색해주세요 </h1>
+            <h1>나라를 검색 및 클릭 해주세요 </h1>
             <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -61,7 +63,8 @@ const Home = () => {
             </form>
             {/* 모달 창에 데이터를 나타낼 부분 */}
             {showModal && countryList &&(
-                <SearchModal countryList={countryList}/>
+                <SearchModal debounceValue={debounceValue}
+                countryList={countryList}/>
             )}
             
             

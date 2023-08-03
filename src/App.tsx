@@ -8,6 +8,7 @@ import Contact from './Pages/Contact';
 import Permit from './Pages/Permit';
 import SpecialTrip from './Pages/SpecialTrip';
 import Notice from './Pages/Notice';
+import CountryPrivate from './Routers/CountryPrivate';
 
 
 function App() {
@@ -18,7 +19,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route path='/' element={<Home/>}></Route>
-        <Route path='/country/:countryNM' element={<Country/>}></Route>
+        <Route path='/country/:countryNM' element={<CountryPrivate/>}></Route>
         <Route path='/basicinfo/:countryNM' element={<Info/>}></Route>
         <Route path='/safety/:countryNM' element={<Safety/>}></Route>
         <Route path='/contact/:countryNM' element={<Contact/>}></Route>

@@ -16,8 +16,8 @@ const Country = () => {
     // 미국만 이름이 미합중국 일때 다른 페이지에 데이터가 출력이 되어 수정하는 코드
     const modifiedCountryName = extractedCountryName === "미국" ? "미합중국" : extractedCountryName;
     
-
-
+    
+    
     return ( 
         <div className="link_container">
             <h1>"{extractedCountryName}"의 정보들 입니다.</h1>
