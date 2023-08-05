@@ -1,8 +1,6 @@
 import { useState, useEffect, useCallback } from "react";
 import { useMyStore } from "../store/countryInfoList";
 import SearchModal from "../components/SearchModal";
-
-
 import useDebounce from "../useDebounce";
 import { useNavigate } from "react-router-dom";
 import MainTitle from "../components/MainTitle";
@@ -25,8 +23,8 @@ const Home = () => {
     
         // searchContry의 업데이트 된 값을 전달 한 데이터 호출
         setTimeout(() => {
-            navigate(`/country/${searchCountry}`, { state: countryList });
-        }, 600); // 디바운스 값 호출 시간보다 뒤에 페이지 이동()
+            navigate(`/country/${searchCountry}`);
+        }, 800); // 디바운스 값 호출 시간보다 뒤에 페이지 이동()
         
     };
 

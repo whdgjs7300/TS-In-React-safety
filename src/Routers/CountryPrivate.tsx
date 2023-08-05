@@ -3,6 +3,7 @@ import { useParams, Navigate, useLocation } from "react-router-dom";
 import Country from "../Pages/Country";
 import { useEffect } from "react";
 import { useMyStore } from "../store/countryInfoList";
+import Loading from "../components/Loading";
 
 // 경고 창 스타일
 const WarningContainer = styled.div`
@@ -22,27 +23,41 @@ const OKButton = styled.button`
 `;
 
 const CountryPrivate = () => {
+    
+    const {countryNM } = useParams();
+    const {countryList, loading }= useMyStore((state) => ({
+        countryList : state.countryList,
+        loading : state.loading,
+    }))
+    const countryAction = useMyStore(state => state.Action)
+    
+    console.log(countryList);
+    useEffect(()=>{
+        if (countryNM) {
+        countryAction(countryNM);
+        }
+    },[countryNM])
 
-    // 라우터 미스 방지
-    
-    
-    
-    const countryList = useMyStore(state => state.countryList)
-    
-    
-    console.log(countryList)
-    
-     // 'countryNM'이 'none'이거나 'countryList'가 null인 경우
+     // 데이터가 로드 중이면 'Loading...'을 표시하도록 설정
+    if (loading) {
+        return <Loading />;
+    }
+     // 검색창이 초기값 '없음' 이거나 아무값이나 입력하면 실행시키는 함수
+     // countryLis는 검색값에 비동기호출을 하기떄문에 데이터 호출결과가
+     // countryList && countryList[0] == undefined 일 때  
     if (countryList && countryList[0] == undefined) {
         const goBack = () => {
             window.history.back();
         };
         // 경고 창 표시
         return (
+            <>
         <WarningContainer>
             <p>해당 나라는 없습니다.</p>
             <OKButton onClick={goBack}>뒤로가기</OKButton>
         </WarningContainer>
+            </>
+        
         );
     }
 
