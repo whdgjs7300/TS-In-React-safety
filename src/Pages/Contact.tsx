@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { useMyStore } from "../store/contactList";
 import Loading from "../components/Loading";
+import NoData from "../components/NoData";
 
 const Contact = () => {
     
@@ -24,17 +25,17 @@ const Contact = () => {
     return ( 
         <>  
             {
-            loading ? <Loading /> : 
-            <div className="container">
-            <h1>{contactList[0].country_nm}({contactList[0].continent_nm})</h1>
-                <div className="contact_info"
-                dangerouslySetInnerHTML={{ __html: contactRemark}}>
-            
-                </div>
-            </div>
-            
-            }
-            
+            loading ? <Loading /> : (
+                contactList.length === 0 ? (
+                    // contactList 값이 []일 때, NoData 컴포넌트 호출
+                    <NoData />
+                ) : (
+                    <div className="container">
+                        <h1>{contactList[0].country_nm}({contactList[0].continent_nm})</h1>
+                        <div className="contact_info" dangerouslySetInnerHTML={{ __html: contactRemark }}></div>
+                    </div>
+                )
+            )}
         </>
         
     );
