@@ -65,7 +65,8 @@ input:focus {
 }
 
 button {
-    padding: 10px 20px;
+    
+    padding: 10px 30px;
     font-size: 16px;
     background-color: lightseagreen;
     color: #fff;
@@ -74,6 +75,7 @@ button {
     cursor: pointer;
     font-size: 15px;
     font-weight: 700;
+    
 }
 
 /* SearchModal 컴포넌트 스타일 */
@@ -175,4 +177,17 @@ button {
 /* specialtrip Page */
 .specialtrip_box {
     margin-top: 200px;
+}
+
+.btn_container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 50px;
+}
+
+.country_btn {
+    width: 200px;
+    margin: auto;
+    margin-top: 30px;
 }

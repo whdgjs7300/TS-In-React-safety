@@ -1,26 +1,13 @@
-import styled from "styled-components";
+
 import { useParams, Navigate, useLocation } from "react-router-dom";
 import Country from "../Pages/Country";
 import { useEffect } from "react";
 import { useMyStore } from "../store/countryInfoList";
 import Loading from "../components/Loading";
+import CountryChoice from "../components/CountryChoice";
+import NoData from "../components/NoData";
 
-// 경고 창 스타일
-const WarningContainer = styled.div`
-    position: fixed;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #ffffff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    text-align: center;
-`;
 
-const OKButton = styled.button`
-  margin-top: 10px; /* 버튼 위에 여백을 줘서 간격을 조절 */
-`;
 
 const CountryPrivate = () => {
     
@@ -31,7 +18,6 @@ const CountryPrivate = () => {
     }))
     const countryAction = useMyStore(state => state.Action)
     
-    console.log(countryList);
     useEffect(()=>{
         if (countryNM) {
         countryAction(countryNM);
@@ -46,22 +32,18 @@ const CountryPrivate = () => {
      // countryLis는 검색값에 비동기호출을 하기떄문에 데이터 호출결과가
      // countryList && countryList[0] == undefined 일 때  
     if (countryList && countryList[0] == undefined) {
-        const goBack = () => {
-            window.history.back();
-        };
         // 경고 창 표시
         return (
-            <>
-        <WarningContainer>
-            <p>해당 나라는 없습니다.</p>
-            <OKButton onClick={goBack}>뒤로가기</OKButton>
-        </WarningContainer>
-            </>
-        
+            <NoData/>
         );
     }
-
-    return <Country />;
+    // 'countryList'가 여러 개인 경우 CountryChoice 컴포넌트 렌더링
+    if (countryList.length > 1) {
+        return (
+            <CountryChoice countryList={countryList} countryNM={countryNM} />
+        );
+    }
+    return <Country item={countryList} />;
 };
 
 export default CountryPrivate;
