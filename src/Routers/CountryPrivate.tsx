@@ -33,7 +33,7 @@ const CountryPrivate = () => {
     console.log(countryList)
     
      // 'countryNM'이 'none'이거나 'countryList'가 null인 경우
-    if (countryList[0] == undefined) {
+    if (countryList && countryList[0] == undefined) {
         const goBack = () => {
             window.history.back();
         };

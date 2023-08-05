@@ -1,13 +1,16 @@
 // 국가별 정보 리스트 페이지
-
 import { Link, useParams } from "react-router-dom";
+import { useMyStore } from "../store/countryInfoList";
+import CountryChoice from "../components/CountryChoice";
 
 
 const Country = () => {
     
     const {countryNM } = useParams();
+    const countryList = useMyStore(state => state.countryList);
     
     
+
     // 만약 countryNM에 괄호로 감싸진 값이 있다면, 괄호 안의 값을 제거
     // \s*: 0개 이상의 공백 문자 (whitespace)를 찾습니다.
     // \(.*\): 괄호로 감싸진 모든 문자열을 찾습니다.
@@ -16,8 +19,11 @@ const Country = () => {
     // 미국만 이름이 미합중국 일때 다른 페이지에 데이터가 출력이 되어 수정하는 코드
     const modifiedCountryName = extractedCountryName === "미국" ? "미합중국" : extractedCountryName;
     
-    
-    
+    console.log(countryList);
+    // countryList의 길이가 1보다 큰 경우, AnotherComponent를 렌더링합니다.
+    if (countryList.length > 1) {
+        return <CountryChoice countryList={countryList}/>;
+    }
     return ( 
         <div className="link_container">
             <h1>"{extractedCountryName}"의 정보들 입니다.</h1>

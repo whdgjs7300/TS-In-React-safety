@@ -9,15 +9,7 @@ interface SearchModalProps {
 }
 
 const SearchModal = ({countryList} : SearchModalProps) => {
-    const navigate = useNavigate();
-
-
-
-    // 국가별 고유 ID값으로 페이지 이동 함수
-    const toCountry = (item: CountryInfoList) => {
-        navigate(`/country/${item.countryName}`);
-    }
-    console.log(countryList[0]?.countryName);
+    
     return ( 
         <div className="modal_container">
             
