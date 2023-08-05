@@ -18,7 +18,7 @@ const CountryChoice = ({countryList, countryNM}: CountryProps) => {
 
     return ( 
         <div >
-            <h1>"{countryNM}" 로 검색한 결과들 입니다.</h1> 
+            <h1>"{countryNM}" 로 검색한 국가들 입니다.</h1> 
             <div className="btn_container">
             {
             countryList && countryList.map((item, i)=>(

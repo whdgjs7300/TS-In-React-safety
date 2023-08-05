@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 
 interface SearchModalProps { 
     countryList : CountryInfoList[],
-    debounceValue : string,
+    
 }
 
 const SearchModal = ({countryList} : SearchModalProps) => {

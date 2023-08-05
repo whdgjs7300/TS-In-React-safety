@@ -1,4 +1,5 @@
 // 국가별 정보 리스트 페이지
+import React from "react";
 import { Link, useParams } from "react-router-dom";
 import { useMyStore } from "../store/countryInfoList";
 import CountryChoice from "../components/CountryChoice";
@@ -40,4 +41,4 @@ const Country = ({item} : CountryProps) => {
     );
 }
 
-export default Country;
+export default React.memo(Country);

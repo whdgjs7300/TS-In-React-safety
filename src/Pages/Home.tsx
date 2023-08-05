@@ -16,7 +16,6 @@ const Home = () => {
     const countryAction = useMyStore(state => state.Action)
     const navigate = useNavigate();
     
-    console.log(debounceValue);
     
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
@@ -31,9 +30,9 @@ const Home = () => {
     // onchange 될 때마다 바로 검색결과를 보여주고 싶으면 수정해야할 함수
     // 이전 값을 리턴하는 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        const inputValue = e.target.value;
+        const inputValue = e.target.value.trim();
         // 스페이스바를 누르거나 빈값일 때도 기본 api 데이터가 호출되는 것을 방지
-    if (inputValue.trim() !== '') {
+    if (inputValue !== '') {
         setSearchCountry(inputValue);
         setShowModal(true);
     }
@@ -46,6 +45,7 @@ const Home = () => {
         countryAction(debounceValue);
     },[debounceValue ])
 
+    
 
     return ( 
         <div className="home_container" >
@@ -61,8 +61,7 @@ const Home = () => {
             </form>
             {/* 모달 창에 데이터를 나타낼 부분 */}
             {showModal && countryList &&(
-                <SearchModal debounceValue={debounceValue}
-                countryList={countryList}/>
+                <SearchModal countryList={countryList}/>
             )}
             
             

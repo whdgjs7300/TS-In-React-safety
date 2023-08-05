@@ -11,7 +11,7 @@ export  interface CountryInfoList {
         id: number; // 나라의 고유 ID (예: 284)
         imgUrl: string; // 이미지 URL
 }
-type StringType = string;
+
 
 // 공통된 타입 선언해서 사용 - 타입 재사용
 type CommonDataType  = {

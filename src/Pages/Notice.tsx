@@ -23,7 +23,7 @@ const Notice = () => {
     return ( 
         <>  
             {
-                loading ? <Loading/> :
+                
                 <div className="container">
                     <h1>출국전 공지사항(외교부)</h1>
                     {
