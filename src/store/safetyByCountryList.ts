@@ -2,7 +2,7 @@ import { create } from 'zustand';
 import axios from 'axios';
 import { SafeByCountryList } from '../types/safetyByCountry';
 
-const REACT_API_KEY="9V%2BSdKNbzQD7oIQPHdDdlKZz0%2BPj1gnzDGKeS%2B8GWk2LHpSkDx5Ig%2F7u6wKopPZEf9brLck%2Bz3z81NapmasU%2Fg%3D%3D";
+const API_KEY=process.env.REACT_APP_API_KEY
 
 interface SafeByContry {
     safeByContryList: SafeByCountryList[]; 
@@ -19,7 +19,7 @@ export const useMyStore = create<SafeByContry>((set)=>({
     Action: async (searchContry) => {
         try {
             set({loading : true})
-            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=${searchContry}&pageNo=1`);
+            const response = await axios.get(`https://apis.data.go.kr/1262000/CountrySafetyService3/getCountrySafetyList3?serviceKey=${API_KEY}&returnType=JSON&numOfRows=10&cond[country_nm::EQ]=${searchContry}&pageNo=1`);
             const data = response.data;
 
             set({ safeByContryList: data.data });

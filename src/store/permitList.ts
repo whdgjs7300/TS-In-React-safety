@@ -3,7 +3,7 @@ import axios from 'axios';
 import { PermitList } from '../types/safetyByCountry';
 
 
-const REACT_API_KEY="9V%2BSdKNbzQD7oIQPHdDdlKZz0%2BPj1gnzDGKeS%2B8GWk2LHpSkDx5Ig%2F7u6wKopPZEf9brLck%2Bz3z81NapmasU%2Fg%3D%3D";
+const API_KEY=process.env.REACT_APP_API_KEY
 
 interface Permit {
     permitList: PermitList[]; // 현재 any로 설정되어 있으므로 실제 데이터 타입에 맞게 수정해야 합니다.
@@ -23,7 +23,7 @@ export const useMyStore = create<Permit>((set)=>({
         try {
             set({loading : true})
 
-            const response = await axios.get(`https://apis.data.go.kr/1262000/EntranceVisaService2/getEntranceVisaList2?serviceKey=${REACT_API_KEY}&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${searchContry}`);
+            const response = await axios.get(`https://apis.data.go.kr/1262000/EntranceVisaService2/getEntranceVisaList2?serviceKey=${API_KEY}&returnType=JSON&numOfRows=10&pageNo=1&cond[country_nm::EQ]=${searchContry}`);
             const data = response.data.data;
         // 검색결과가 1개가 나올 땐 배열로 반환하지 않아 map 함수 실행 오류를 방지하기 위한 변수
             const dataArray = Array.isArray(data) ? data : [data];
