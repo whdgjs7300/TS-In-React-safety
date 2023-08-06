@@ -1,6 +1,6 @@
 import React,{ useEffect } from "react";
 import { useMyStore } from "../store/noticeList";
-import Loading from "../components/Loading";
+
 
 // 같은 내용을 반복하는 페이지이기 때문에 
 // react.memo를 사용하여 이전 내용과 동일한 경우 불필요한 렌더링을 방지함 !
@@ -8,7 +8,7 @@ import Loading from "../components/Loading";
 const Notice = () => {
     
 
-    const {noticeList, loading} = useMyStore((state)=>({
+    const {noticeList} = useMyStore((state)=>({
         noticeList : state.noticeList,
         loading : state.loading,
     }));

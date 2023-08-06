@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/permitList";
 import Loading from "../components/Loading";

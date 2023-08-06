@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/safetyByCountryList";
 import Loading from "../components/Loading";
@@ -18,7 +18,7 @@ const Safety = () => {
         if ( countryNM !== undefined)
         safetyAction(countryNM);
     },[])
-    console.log(safeByContryList);
+
 
     return ( 
         <>  

@@ -7,7 +7,6 @@ import Contact from './Pages/Contact';
 import Permit from './Pages/Permit';
 import SpecialTrip from './Pages/SpecialTrip';
 import Notice from './Pages/Notice';
-
 import { Suspense, lazy } from 'react';
 import Loading from './components/Loading';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSpring, animated } from '@react-spring/web'
 import styles from '../styles.module.css';
 

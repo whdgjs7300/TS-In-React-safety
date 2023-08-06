@@ -1,4 +1,4 @@
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useMyStore } from "../store/specialTripList";
 import Loading from "../components/Loading";
@@ -19,7 +19,7 @@ const SpecialTrip = () => {
         if(countryNM !== undefined)
         specialTripAction(countryNM);
     },[])
-    console.log(specialTripList)
+
 
     return ( 
         <>

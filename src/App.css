@@ -103,6 +103,8 @@ button {
     width: 100%;
     font-size: 15px;
     font-weight: 700;
+    color: black;
+    text-decoration: none;
 }
 
 .modal_item:hover {
@@ -119,6 +121,18 @@ button {
     
 }
 
+.input_container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.input_container input {
+    text-align: center;
+    margin-bottom: 10px;
+}
 
 
 .container img {

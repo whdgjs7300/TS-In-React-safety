@@ -43,7 +43,7 @@ const CountryPrivate = () => {
             <CountryChoice countryList={countryList} countryNM={countryNM} />
         );
     }
-    return <Country item={countryList} />;
+    return <Country/>;
 };
 
 export default CountryPrivate;

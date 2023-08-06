@@ -1,6 +1,6 @@
-import { useNavigate, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { CountryInfoList } from "../types/safetyByCountry";
-import { useEffect, useState } from "react";
+
 
 
 interface SearchModalProps { 

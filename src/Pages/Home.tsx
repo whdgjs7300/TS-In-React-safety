@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import { useMyStore } from "../store/countryInfoList";
 import SearchModal from "../components/SearchModal";
 import useDebounce from "../useDebounce";
@@ -50,6 +50,7 @@ const Home = () => {
     return ( 
         <div className="home_container" >
             <MainTitle/>
+            
             <h1>나라를 검색 및 클릭 해주세요 </h1>
             <form onSubmit={handleSubmit}>
             <input

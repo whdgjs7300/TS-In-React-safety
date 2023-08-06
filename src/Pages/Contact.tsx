@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useMyStore } from "../store/contactList";
 import Loading from "../components/Loading";
 import NoData from "../components/NoData";
@@ -20,7 +20,6 @@ const Contact = () => {
         contactAction(countryNM);
     },[])
     const contactRemark = contactList[0]?.contact_remark;
-    console.log(contactList);
 
     return ( 
         <>  
