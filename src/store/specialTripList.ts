@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import axios from 'axios';
-import { SafeByCountryList, SpecialTripList } from '../types/safetyByCountry';
+import { SpecialTripList } from '../types/safetyByCountry';
 
 const API_KEY=process.env.REACT_APP_API_KEY
 

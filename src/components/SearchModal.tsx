@@ -22,7 +22,8 @@ const SearchModal = ({countryList} : SearchModalProps) => {
                         <h2>해당 국가는 없습니다.</h2>
                         ) : (
                             countryList?.map((item, i) => (
-                            <Link state={countryList}
+                            <Link 
+                            state={countryList}
                             to={`country/${item.countryName}`}
                             className="modal_item"                          
                             key={i}>{item?.countryName} ({item?.countryEnName})</Link>

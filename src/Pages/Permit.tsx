@@ -18,7 +18,7 @@ const Permit = () => {
         if(countryNM !== undefined)
         permitAction(countryNM);
     },[])
-    console.log(permitList)
+    
 
     return (  
         <>

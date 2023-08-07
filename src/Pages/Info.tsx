@@ -22,7 +22,7 @@ const Info = () => {
         countryInfoAction(countryNM); 
     },[])
     const basicInfo = countryInfoList[0]?.basic;
-    console.log(countryInfoList);
+
     
     return ( 
         <>

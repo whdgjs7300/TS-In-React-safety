@@ -18,7 +18,7 @@ const Notice = () => {
     useEffect(()=>{
         noticeAction();
     },[])
-    console.log(noticeList);
+    
 
     return ( 
         <>  
