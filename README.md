@@ -1,4 +1,4 @@
-# 전 세계 여행 시 안전성 확인 웹사이트
+# 전 세계 여행 정보 및 안전성 확인 웹사이트
 
 ## 프로젝트 링크
 https://jongheons-countryinfo.netlify.app/
